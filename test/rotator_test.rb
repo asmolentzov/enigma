@@ -32,4 +32,9 @@ class RotatorTests < Minitest::Test
     assert_equal 'd', @rotator.rotate('l', 73)
   end
   
+  def test_it_can_return_character_if_not_in_character_set
+    assert_equal '&', @rotator.rotate('&', 4)
+    assert_equal '!', @rotator.rotate('!', 29)
+  end
+  
 end
