@@ -1,3 +1,4 @@
+require './test/test_helper'
 require './lib/rotator'
 
 class RotatorTests < Minitest::Test
