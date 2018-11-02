@@ -18,6 +18,13 @@ class RotatorTests < Minitest::Test
   
   def test_it_can_rotate_a_character
     assert_equal 'b', @rotator.rotate('a', 1)
+    assert_equal 'c', @rotator.rotate('a', 2)
+    assert_equal 'k', @rotator.rotate('h', 3)
+  end
+  
+  def test_it_can_rotate_a_character_looping_alphabet
+    assert_equal 'e', @rotator.rotate('l', 20)
+    assert_equal 'a', @rotator.rotate('z', 2)
   end
   
 end
