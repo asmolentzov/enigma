@@ -7,8 +7,12 @@ class Rotator
   end
   
   def rotate(character, amount)
-    index = @character_set.find_index(character)
-    rotated = @character_set.rotate(amount)
-    rotated[index]
+    if @character_set.include? character
+      index = @character_set.find_index(character)
+      rotated = @character_set.rotate(amount)
+      rotated[index]
+    else
+      character
+    end
   end
 end
