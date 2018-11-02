@@ -27,4 +27,9 @@ class RotatorTests < Minitest::Test
     assert_equal 'a', @rotator.rotate('z', 2)
   end
   
+  def test_it_can_rotate_a_character_by_more_than_26
+    assert_equal 'b', @rotator.rotate('a', 28)
+    assert_equal 'd', @rotator.rotate('l', 73)
+  end
+  
 end
