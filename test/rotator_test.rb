@@ -17,24 +17,29 @@ class RotatorTests < Minitest::Test
   end
   
   def test_it_can_rotate_a_character
-    assert_equal 'b', @rotator.rotate('a', 1)
-    assert_equal 'c', @rotator.rotate('a', 2)
-    assert_equal 'k', @rotator.rotate('h', 3)
+    assert_equal 'b', @rotator.rotate_character('a', 1)
+    assert_equal 'c', @rotator.rotate_character('a', 2)
+    assert_equal 'k', @rotator.rotate_character('h', 3)
   end
   
   def test_it_can_rotate_a_character_looping_alphabet
-    assert_equal 'e', @rotator.rotate('l', 20)
-    assert_equal 'a', @rotator.rotate('z', 2)
+    assert_equal 'e', @rotator.rotate_character('l', 20)
+    assert_equal 'a', @rotator.rotate_character('z', 2)
   end
   
   def test_it_can_rotate_a_character_by_more_than_26
-    assert_equal 'b', @rotator.rotate('a', 28)
-    assert_equal 'd', @rotator.rotate('l', 73)
+    assert_equal 'b', @rotator.rotate_character('a', 28)
+    assert_equal 'd', @rotator.rotate_character('l', 73)
   end
   
   def test_it_can_return_character_if_not_in_character_set
-    assert_equal '&', @rotator.rotate('&', 4)
-    assert_equal '!', @rotator.rotate('!', 29)
+    assert_equal '&', @rotator.rotate_character('&', 4)
+    assert_equal '!', @rotator.rotate_character('!', 29)
+  end
+  
+  def test_it_can_rotate_four_characters
+    actual = @rotator.rotate_four(['a', 'b', 'c', 'd'], [1, 2, 3, 4])
+    assert_equal ['b', 'd', 'f', 'h'], actual
   end
   
 end
