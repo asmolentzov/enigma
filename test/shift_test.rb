@@ -11,6 +11,11 @@ class ShiftTest < Minitest::Test
     assert_instance_of Shift, @shift
   end
   
+  def test_it_has_attributes
+    assert_equal '12345', @shift.key
+    assert_equal '230714', @shift.date
+  end
+  
   def test_it_can_split_up_key
     assert_equal [12, 23, 34, 45], @shift.key_split
   end
