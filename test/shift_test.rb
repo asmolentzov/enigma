@@ -45,16 +45,22 @@ class ShiftTest < Minitest::Test
     date = Date.parse('3rd Nov 2018')
     shift = Shift.new('12345', date)
     assert_equal '031118', shift.get_date(date)
+    assert_equal '031118', shift.date
+
     date_2 = '121212'
     shift_2 = Shift.new('12345', date_2)
     assert_equal '121212', shift_2.get_date(date_2)
+    assert_equal '121212', shift_2.date
   end
   
   def test_it_can_generate_random_key_if_none_given
     shift = Shift.new(nil, '121212')
     assert_instance_of String, shift.get_key(nil)
+    assert_instance_of String, shift.key
     assert_equal 5, shift.get_key(nil).length
+    assert_equal 5, shift.key.length
     assert_instance_of Integer, shift.get_key(nil).to_i
+    assert_instance_of Integer, shift.key.to_i
     key_1 = shift.get_key(nil)
     key_2 = shift.get_key(nil)
     refute key_1 == key_2
