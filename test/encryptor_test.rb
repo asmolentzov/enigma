@@ -4,7 +4,7 @@ require './lib/encryptor'
 class EncryptorTest < Minitest::Test
   
   def setup
-    message = "hello world"
+    message = 'hello world'
     shifts = [3, 27, 73, 20]
     @encryptor = Encryptor.new(message, shifts)
   end
@@ -17,5 +17,8 @@ class EncryptorTest < Minitest::Test
     assert_equal “keder ohulw”, @encryptor.encrypt
   end
   
+  def test_it_can_split_message_into_chunks_of_four_characters
+    assert_equal ['hell', 'o wo', 'rld'], @encryptor.four_split
+  end
   
 end
