@@ -2,7 +2,15 @@ class Shift
   
   def initialize(key, date)
     @key = key
-    @date = date
+    @date = get_date(date)
+  end
+  
+  def get_date(date)
+    if date.is_a? Date
+      date.strftime('%d%m%y')
+    else 
+      date
+    end
   end
   
   def key_split
