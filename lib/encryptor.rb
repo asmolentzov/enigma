@@ -9,16 +9,10 @@ class Encryptor
   
   def encrypt
     rotator = Rotator.new(("a".."z").to_a << " ")
-    cipher = ''
     character_chunks = four_split
-    character_chunks.each do |character_chunk|
-      index = 0
-      character_chunk.each do |character|
-        cipher += rotator.rotate_character(character, @shifts[index])
-        index += 1
-      end
-    end
-    cipher
+    character_chunks.map do |character_chunk|
+      rotator.rotate_four(character_chunk, @shifts)
+    end.join
   end
   
   def four_split
@@ -27,9 +21,6 @@ class Encryptor
     until message_characters == [] do
       split_message << message_characters.shift(4)
     end
-    
     split_message
   end
-  
-  
 end
