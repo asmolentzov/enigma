@@ -19,4 +19,8 @@ class ShiftTest < Minitest::Test
     assert_equal [9, 7, 9, 6], @shift.create_offsets
   end
   
+  def test_it_can_get_shifts
+    assert_equal [21, 30, 43, 51], @shift.get_shifts
+  end
+  
 end
