@@ -2,6 +2,9 @@ class Shift
   
   KEY_LENGTH = 5
   
+  attr_reader :key,
+              :date
+  
   def initialize(key, date)
     @key = get_key(key)
     @date = get_date(date)
