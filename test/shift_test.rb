@@ -23,4 +23,10 @@ class ShiftTest < Minitest::Test
     assert_equal [21, 30, 43, 51], @shift.get_shifts
   end
   
+  def test_it_can_create_offset_from_date_object
+    date = Date.parse('3rd Nov 2018')
+    shift = Shift.new('12345', date)
+    assert_equal [9, 9, 2, 4], shift.create_offsets
+  end
+  
 end
