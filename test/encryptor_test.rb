@@ -18,10 +18,12 @@ class EncryptorTest < Minitest::Test
   end
   
   def test_it_can_split_message_into_chunks_of_four_characters
-    assert_equal ['hell', 'o wo', 'rld'], @encryptor.four_split
+    expected = [['h', 'e', 'l', 'l'], ['o', ' ',  'w', 'o'], ['r', 'l', 'd']]
+    assert_equal expected, @encryptor.four_split
     message = 'hello world!'
     encryptor = Encryptor.new(message, [3, 27, 73, 20])
-    assert_equal ['hell', 'o wo', 'rld!'], encryptor.four_split
+    expected = [['h', 'e', 'l', 'l'], ['o', ' ',  'w', 'o'], ['r', 'l', 'd', '!']]
+    assert_equal expected, encryptor.four_split
   end
   
 end
