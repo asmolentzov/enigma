@@ -14,7 +14,7 @@ class Encryptor
     character_chunks.each do |character_chunk|
       index = 0
       character_chunk.each do |character|
-        cipher += rotator.rotate(character, @shifts[index])
+        cipher += rotator.rotate_character(character, @shifts[index])
         index += 1
       end
     end
