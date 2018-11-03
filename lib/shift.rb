@@ -24,4 +24,13 @@ class Shift
     end
   end
   
+  def get_shifts
+    keys = key_split
+    offsets = create_offsets
+
+    keys.zip(offsets).map do |key_offset|
+      key_offset.sum
+    end
+  end
+  
 end
