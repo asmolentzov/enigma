@@ -15,4 +15,10 @@ class Rotator
       character
     end
   end
+  
+  def rotate_four(characters, shifts)
+    characters.map.with_index do |character, index|
+      rotate_character(character, shifts[index])
+    end
+  end
 end
