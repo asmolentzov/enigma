@@ -1,8 +1,30 @@
 class Shift
   
+  KEY_LENGTH = 5
+  
   def initialize(key, date)
-    @key = key
-    @date = date
+    @key = get_key(key)
+    @date = get_date(date)
+  end
+  
+  def get_date(date)
+    if date.is_a? Date
+      date.strftime('%d%m%y')
+    else 
+      date
+    end
+  end
+  
+  def get_key(key)
+    if key
+      key
+    else
+      key = ''
+      KEY_LENGTH.times do 
+        key += rand(9).to_s
+      end
+      key
+    end
   end
   
   def key_split
