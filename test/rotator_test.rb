@@ -37,4 +37,9 @@ class RotatorTests < Minitest::Test
     assert_equal '!', @rotator.rotate_character('!', 29)
   end
   
+  def test_it_can_rotate_four_characters
+    actual = @rotator.rotate_four(['a', 'b', 'c', 'd'], [1, 2, 3, 4])
+    assert_equal ['b', 'd', 'f', 'h'], actual
+  end
+  
 end
