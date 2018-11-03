@@ -19,6 +19,9 @@ class EncryptorTest < Minitest::Test
   
   def test_it_can_split_message_into_chunks_of_four_characters
     assert_equal ['hell', 'o wo', 'rld'], @encryptor.four_split
+    message = 'hello world!'
+    encryptor = Encryptor.new(message, [3, 27, 73, 20])
+    assert_equal ['hell', 'o wo', 'rld!'], encryptor.four_split
   end
   
 end
