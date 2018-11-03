@@ -13,6 +13,9 @@ class EncryptorTest < Minitest::Test
     assert_instance_of Encryptor, @encryptor
   end
   
+  def test_it_can_encrypt_message
+    assert_equal “keder ohulw”, @encryptor.encrypt
+  end
   
   
 end
