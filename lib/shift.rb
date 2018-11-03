@@ -1,7 +1,9 @@
 class Shift
   
+  KEY_LENGTH = 5
+  
   def initialize(key, date)
-    @key = key
+    @key = get_key(key)
     @date = get_date(date)
   end
   
@@ -10,6 +12,18 @@ class Shift
       date.strftime('%d%m%y')
     else 
       date
+    end
+  end
+  
+  def get_key(key)
+    if key
+      key
+    else
+      key = ''
+      KEY_LENGTH.times do 
+        key += rand(9).to_s
+      end
+      key
     end
   end
   
