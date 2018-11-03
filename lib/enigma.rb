@@ -8,7 +8,7 @@ class Enigma
     shifts = shift.get_shifts
     encryptor = Encryptor.new(message, shifts)
     cipher = encryptor.encrypt
-    {encryption: cipher, key: key, date: date}
+    {encryption: cipher, key: shift.key, date: shift.date}
   end
   
 end
