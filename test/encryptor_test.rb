@@ -14,7 +14,7 @@ class EncryptorTest < Minitest::Test
   end
   
   def test_it_can_encrypt_message
-    assert_equal “keder ohulw”, @encryptor.encrypt
+    assert_equal 'keder ohulw', @encryptor.encrypt
   end
   
   def test_it_can_split_message_into_chunks_of_four_characters
