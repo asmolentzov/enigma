@@ -42,4 +42,10 @@ class RotatorTests < Minitest::Test
     assert_equal ['b', 'd', 'f', 'h'], actual
   end
   
+  def test_it_can_get_rotation_amount
+    assert_equal 1, @rotator.get_amount('b', 'a')
+    assert_equal 4, @rotator.get_amount('f', 'b')
+    assert_equal 27, @rotator.get_amount('a', 'a')
+  end
+  
 end
