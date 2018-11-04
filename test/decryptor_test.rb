@@ -27,7 +27,8 @@ class DecryptorTest < Minitest::Test
   end
   
   def test_it_can_make_shifts_negative
-    assert_equal [-3, -27, -73, -20], @decryptor.get_negative_shifts
+    shifts = [3, 27, 73, 20]
+    assert_equal [-3, -27, -73, -20], @decryptor.get_negative_shifts(shifts)
   end
   
 end
