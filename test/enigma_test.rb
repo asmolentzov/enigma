@@ -65,4 +65,16 @@ class EnigmaTest < Minitest::Test
     assert_equal 'keder ohulw'.length, result[:decryption].length
     assert_instance_of String, result[:decryption]
   end
+  
+  def test_it_can_encrypt_and_then_decrypt
+    encryption = @enigma.encrypt("hello world", "02715", "040895")
+    decryption = @enigma.decrypt(encryption[:encryption], '02715', '040895')
+    assert_equal 'hello world', decryption[:decryption]
+  end
+  
+  def test_it_can_encrypt_and_then_decrypt_with_no_date
+    encryption = @enigma.encrypt("hello world", "02715")
+    decryption = @enigma.decrypt(encryption[:encryption], '02715')
+    assert_equal 'hello world', decryption[:decryption]
+  end
 end
