@@ -1,7 +1,5 @@
 class Shift
-  
-  KEY_LENGTH = 5
-  
+
   attr_reader :key,
               :date
   
@@ -23,7 +21,7 @@ class Shift
       key
     else
       key = ''
-      KEY_LENGTH.times do 
+      Enigma::KEY_LENGTH.times do 
         key += rand(9).to_s
       end
       key
