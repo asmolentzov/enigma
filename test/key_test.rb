@@ -54,4 +54,9 @@ class KeyTest < Minitest::Test
       last_four = Key.get_last_four('hello world end')
       assert_equal ' end', last_four
     end
+    
+    def test_it_can_get_index_differences
+      last_four = 'agqh'
+      assert_equal [1, 2, 3, 4], Key.get_index_differences(last_four)
+    end
 end
