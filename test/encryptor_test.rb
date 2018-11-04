@@ -5,8 +5,9 @@ class EncryptorTest < Minitest::Test
   
   def setup
     message = 'hello world'
-    shifts = [3, 27, 73, 20]
-    @encryptor = Encryptor.new(message, shifts)
+    shift = mock
+    shift.stubs(:shifts).returns([3, 27, 73, 20])
+    @encryptor = Encryptor.new(message, shift)
   end
   
   def test_it_exists
@@ -21,7 +22,9 @@ class EncryptorTest < Minitest::Test
     expected = [['h', 'e', 'l', 'l'], ['o', ' ',  'w', 'o'], ['r', 'l', 'd']]
     assert_equal expected, @encryptor.four_split
     message = 'hello world!'
-    encryptor = Encryptor.new(message, [3, 27, 73, 20])
+    shift = mock
+    shift.stubs(:shifts).returns([3, 27, 73, 20])
+    encryptor = Encryptor.new(message, shift)
     expected = [['h', 'e', 'l', 'l'], ['o', ' ',  'w', 'o'], ['r', 'l', 'd', '!']]
     assert_equal expected, encryptor.four_split
   end

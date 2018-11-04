@@ -2,9 +2,9 @@ require './lib/rotator'
 
 class Encryptor
   
-  def initialize(message, shifts)
+  def initialize(message, shift)
     @message = message
-    @shifts = shifts
+    @shifts = shift.shifts
   end
   
   def encrypt

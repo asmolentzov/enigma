@@ -5,8 +5,9 @@ class DecryptorTest < Minitest::Test
   
   def setup
     cipher = 'keder ohulw'
-    shifts = [3, 27, 73, 20]
-    @decryptor = Decryptor.new(cipher, shifts)
+    shift = mock
+    shift.stubs(:backwards_shifts).returns([-3, -27, -73, -20])
+    @decryptor = Decryptor.new(cipher, shift)
   end
   
   def test_it_exists
@@ -21,14 +22,11 @@ class DecryptorTest < Minitest::Test
     expected = [['k', 'e', 'd', 'e'], ['r', ' ',  'o', 'h'], ['u', 'l', 'w']]
     assert_equal expected, @decryptor.four_split
     
-    decryptor = Decryptor.new('keder ohulw!', [3, 27, 73, 20])
+    shift = mock
+    shift.stubs(:backwards_shifts).returns([-3, -27, -73, -20])
+    decryptor = Decryptor.new('keder ohulw!', shift)
     expected = [['k', 'e', 'd', 'e'], ['r', ' ',  'o', 'h'], ['u', 'l', 'w', '!']]
     assert_equal expected, decryptor.four_split
-  end
-  
-  def test_it_can_make_shifts_negative
-    shifts = [3, 27, 73, 20]
-    assert_equal [-3, -27, -73, -20], @decryptor.get_negative_shifts(shifts)
   end
   
 end

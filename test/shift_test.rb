@@ -31,10 +31,10 @@ class ShiftTest < Minitest::Test
   end
   
   def test_it_can_get_shifts
-    assert_equal [21, 30, 43, 51], @shift.get_shifts
+    assert_equal [21, 30, 43, 51], @shift.shifts
     date = Date.parse('3rd Nov 2018')
     shift = Shift.new(nil, date)
-    shifts = shift.get_shifts
+    shifts = shift.shifts
     assert_instance_of Array, shifts
     assert_equal 4, shifts.length
     assert_instance_of Integer, shifts.first
@@ -64,5 +64,9 @@ class ShiftTest < Minitest::Test
     key_1 = shift.get_key(nil)
     key_2 = shift.get_key(nil)
     refute key_1 == key_2
+  end
+  
+  def test_it_can_make_shifts_negative
+    assert_equal [-21, -30, -43, -51], @shift.backwards_shifts
   end
 end

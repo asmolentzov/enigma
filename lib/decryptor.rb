@@ -2,9 +2,9 @@ require './lib/rotator'
 
 class Decryptor
   
-  def initialize(cipher, shifts)
+  def initialize(cipher, shift)
     @cipher = cipher
-    @shifts = get_negative_shifts(shifts)
+    @shifts = shift.backwards_shifts
   end
   
   def decrypt
@@ -22,12 +22,5 @@ class Decryptor
       split_cipher << cipher_characters.shift(4)
     end
     split_cipher
-  end
-  
-  def get_negative_shifts(shifts)
-    shifts.map do |shift|
-      -shift
-    end
-  end
-  
+  end  
 end
