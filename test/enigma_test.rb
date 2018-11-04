@@ -48,4 +48,33 @@ class EnigmaTest < Minitest::Test
     assert_equal date, result [:date]
   end
   
+  def test_it_can_decrypt_a_cipher
+    expected = {
+                decryption: "hello world",
+                key: "02715",
+                date: "040895"
+              }
+    assert_equal expected, @enigma.decrypt("keder ohulw", "02715", "040895")
+  end
+  
+  def test_it_can_decrypt_a_cipher_with_no_date
+    date = Date.today.strftime('%d%m%y')
+    result = @enigma.decrypt("keder ohulw", "02715")
+    assert_equal '02715', result[:key]
+    assert_equal date, result[:date]
+    assert_equal 'keder ohulw'.length, result[:decryption].length
+    assert_instance_of String, result[:decryption]
+  end
+  
+  def test_it_can_encrypt_and_then_decrypt
+    encryption = @enigma.encrypt("hello world", "02715", "040895")
+    decryption = @enigma.decrypt(encryption[:encryption], '02715', '040895')
+    assert_equal 'hello world', decryption[:decryption]
+  end
+  
+  def test_it_can_encrypt_and_then_decrypt_with_no_date
+    encryption = @enigma.encrypt("hello world", "02715")
+    decryption = @enigma.decrypt(encryption[:encryption], '02715')
+    assert_equal 'hello world', decryption[:decryption]
+  end
 end
