@@ -4,9 +4,7 @@ class Key
   
   include RandomNumber
   
-  def self.get_keys(key)
-    self.new(key).keys
-  end
+  attr_reader :key
   
   def initialize(key)
     if key 

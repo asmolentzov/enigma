@@ -10,13 +10,15 @@ class KeyTest < Minitest::Test
     end
     
     def test_it_can_get_keys_if_given_key
-      keys = Key.get_keys('12345')
+      key = Key.new('12345')
+      keys = key.keys
       expected = [12, 23, 34, 45]
       assert_equal expected, keys
     end
     
     def test_it_can_get_keys_if_given_nil
-      keys = Key.get_keys(nil)
+      key = Key.new(nil)
+      keys = key.keys
       assert_instance_of Array, keys
       assert_equal 4, keys.length
       assert_instance_of Integer, keys.first
