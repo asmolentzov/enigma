@@ -1,38 +1,23 @@
 require './lib/key'
+require './lib/offset'
 
 class Shift
-
-  attr_reader :date
-  
   def initialize(key, date)
     @key = Key.new(key)
-    @date = get_date(date)
+    @offset = Offset.new(date)
   end
   
   def key
     @key.key
   end
   
-  def get_date(date)
-    if date.is_a? Date
-      date.strftime('%d%m%y')
-    else 
-      date
-    end
-  end
-  
-  def create_offsets
-    squared_date = @date.to_i ** 2
-    last_four = squared_date.to_s[-Enigma::NUMBER_SHIFTS,
-                                  Enigma::NUMBER_SHIFTS]
-    last_four.split('').map do |char|
-      char.to_i
-    end
+  def date
+    @offset.date
   end
   
   def shifts
     keys = @key.keys
-    offsets = create_offsets
+    offsets = @offset.offsets
 
     keys.zip(offsets).map do |key_offset|
       key_offset.sum
