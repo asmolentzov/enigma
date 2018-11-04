@@ -19,16 +19,6 @@ class ShiftTest < Minitest::Test
   def test_it_can_return_key_value
     assert_equal '12345', @shift.key
   end
-    
-  def test_it_can_create_offsets
-    assert_equal [9, 7, 9, 6], @shift.create_offsets
-  end
-  
-  def test_it_can_create_offset_from_date_object
-    date = Date.parse('3rd Nov 2018')
-    shift = Shift.new('12345', date)
-    assert_equal [9, 9, 2, 4], shift.create_offsets
-  end
   
   def test_it_can_get_shifts
     assert_equal [21, 30, 43, 51], @shift.shifts
@@ -39,18 +29,6 @@ class ShiftTest < Minitest::Test
     assert_equal 4, shifts.length
     assert_instance_of Integer, shifts.first
     assert_instance_of Integer, shifts.last
-  end
-  
-  def test_it_can_create_date_string_from_date_object
-    date = Date.parse('3rd Nov 2018')
-    shift = Shift.new('12345', date)
-    assert_equal '031118', shift.get_date(date)
-    assert_equal '031118', shift.date
-
-    date_2 = '121212'
-    shift_2 = Shift.new('12345', date_2)
-    assert_equal '121212', shift_2.get_date(date_2)
-    assert_equal '121212', shift_2.date
   end
   
   def test_it_can_make_shifts_negative
