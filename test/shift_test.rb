@@ -65,4 +65,8 @@ class ShiftTest < Minitest::Test
     key_2 = shift.get_key(nil)
     refute key_1 == key_2
   end
+  
+  def test_it_can_make_shifts_negative
+    assert_equal [-21, -30, -43, -51], @shift.get_negative_shifts
+  end
 end
