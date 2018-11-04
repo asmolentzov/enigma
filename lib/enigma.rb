@@ -1,6 +1,4 @@
 require './lib/shift'
-# require './lib/encryptor'
-# require './lib/decryptor'
 require './lib/codebook'
 
 class Enigma
