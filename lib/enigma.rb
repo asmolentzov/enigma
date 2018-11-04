@@ -1,6 +1,5 @@
 require './lib/shift'
-require './lib/encryptor'
-require './lib/decryptor'
+require './lib/codebook'
 
 class Enigma
   
@@ -11,15 +10,13 @@ class Enigma
     end
     
     shift = Shift.new(key, date)
-    encryptor = Encryptor.new(message, shift)
-    cipher = encryptor.encrypt
+    cipher = Codebook.encrypt(message, shift)
     {encryption: cipher, key: shift.key, date: shift.date}
   end
   
   def decrypt(cipher, key, date = Date.today)
     shift = Shift.new(key, date)
-    decryptor = Decryptor.new(cipher, shift)
-    message = decryptor.decrypt
+    message = Codebook.decrypt(cipher, shift)
     {decryption: message, key: key, date: shift.date}
   end
   
