@@ -19,13 +19,13 @@ class Codebook
     phrase_characters = @phrase.split('')
     split_phrase = []
     until phrase_characters == [] do
-      split_phrase << phrase_characters.shift(4)
+      split_phrase << phrase_characters.shift(Enigma::NUMBER_SHIFTS)
     end
     split_phrase
   end
   
   def code
-    rotator = Rotator.new(("a".."z").to_a << " ")
+    rotator = Rotator.new(Enigma::CHARACTER_SET)
     character_chunks = four_split
     character_chunks.map do |character_chunk|
       rotator.rotate_four(character_chunk, @shifts)
