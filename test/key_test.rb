@@ -40,4 +40,13 @@ class KeyTest < Minitest::Test
       refute number == number_2
     end
   
+    def test_it_can_generate_random_key_if_none_given
+      key = Key.new(nil)
+      assert_instance_of String, key.key
+      assert_equal 5, key.key.length
+      assert_instance_of Integer, key.key.to_i
+      key_1 = Key.new(nil).key
+      key_2 = Key.new(nil).key
+      refute key_1 == key_2
+    end
 end

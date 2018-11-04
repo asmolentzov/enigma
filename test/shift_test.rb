@@ -50,19 +50,6 @@ class ShiftTest < Minitest::Test
     assert_equal '121212', shift_2.date
   end
   
-  def test_it_can_generate_random_key_if_none_given
-    shift = Shift.new(nil, '121212')
-    assert_instance_of String, shift.get_key(nil)
-    assert_instance_of String, shift.key
-    assert_equal 5, shift.get_key(nil).length
-    assert_equal 5, shift.key.length
-    assert_instance_of Integer, shift.get_key(nil).to_i
-    assert_instance_of Integer, shift.key.to_i
-    key_1 = shift.get_key(nil)
-    key_2 = shift.get_key(nil)
-    refute key_1 == key_2
-  end
-  
   def test_it_can_make_shifts_negative
     assert_equal [-21, -30, -43, -51], @shift.backwards_shifts
   end
