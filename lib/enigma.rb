@@ -3,6 +3,10 @@ require './lib/codebook'
 
 class Enigma
   
+  @@CHARACTER_SET = ("a".."z").to_a << " "
+  @@KEY_LENGTH = 5
+  @@NUMBER_SHIFTS = 4
+  
   def encrypt(message, key = nil, date = Date.today)
     if key && key.length > 5
       date = key
