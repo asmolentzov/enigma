@@ -16,7 +16,7 @@ class Key
     end
   end
   
-  def key_split
+  def keys
     key_characters = @key.split('')
     split = []
     key_characters.each_with_index do |character, index|

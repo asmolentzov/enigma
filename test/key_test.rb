@@ -25,7 +25,7 @@ class KeyTest < Minitest::Test
     
     def test_it_can_split_up_key
       key = Key.new('12345')
-      assert_equal [12, 23, 34, 45], key.key_split
+      assert_equal [12, 23, 34, 45], key.keys
     end
   
 end
