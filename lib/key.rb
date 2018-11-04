@@ -5,15 +5,15 @@ class Key
   include RandomNumber
   
   def self.get_keys(key)
-    if key
-      self.new(key).keys
-    else
-      self.new(random_number_string(Enigma::KEY_LENGTH)).keys
-    end
+    self.new(key).keys
   end
   
   def initialize(key)
-    @key = key
+    if key 
+      @key = key
+    else 
+      @key = random_number_string(Enigma::KEY_LENGTH)
+    end
   end
   
   def key_split
