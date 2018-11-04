@@ -17,14 +17,20 @@ class CodebookTest < Minitest::Test
     shift.stubs(:shifts).returns([3, 27, 73, 20])
     cipher = Codebook.encrypt(message, shift)
     assert_equal 'keder ohulw', cipher
+    message = 'hello world!'
+    cipher = Codebook.encrypt(message, shift)
+    assert_equal 'keder ohulw!', cipher
   end
   
   def test_it_can_decrypt_message
     cipher = 'keder ohulw'
     shift = mock
-    shift.stubs(:backwards_shifts).returns([3, 27, 73, 20])
+    shift.stubs(:backwards_shifts).returns([-3, -27, -73, -20])
     message = Codebook.decrypt(cipher, shift)
     assert_equal 'hello world', message
+    cipher = 'keder ohulw!'
+    message = Codebook.decrypt(cipher, shift)
+    assert_equal 'hello world!', message
   end
   
   def test_it_can_code_a_phrase
@@ -38,9 +44,7 @@ class CodebookTest < Minitest::Test
     expected = [['h', 'e', 'l', 'l'], ['o', ' ',  'w', 'o'], ['r', 'l', 'd']]
     assert_equal expected, @codebook.four_split
     message = 'hello world!'
-    shift = mock
-    shift.stubs(:shifts).returns([3, 27, 73, 20])
-    codebook = Codebook.new(message, shift)
+    codebook = Codebook.new(message, [3, 27, 73, 20])
     expected = [['h', 'e', 'l', 'l'], ['o', ' ',  'w', 'o'], ['r', 'l', 'd', '!']]
     assert_equal expected, codebook.four_split
   end
