@@ -10,7 +10,7 @@ class Offset
     end
   end
   
-  def create_offsets
+  def offsets
     squared_date = @date.to_i ** 2
     last_four = squared_date.to_s[-Enigma::NUMBER_SHIFTS,
                                   Enigma::NUMBER_SHIFTS]
