@@ -25,7 +25,7 @@ class Codebook
   end
   
   def code
-    rotator = Rotator.new(("a".."z").to_a << " ")
+    rotator = Rotator.new(Enigma::CHARACTER_SET)
     character_chunks = four_split
     character_chunks.map do |character_chunk|
       rotator.rotate_four(character_chunk, @shifts)
