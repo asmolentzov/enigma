@@ -67,6 +67,6 @@ class ShiftTest < Minitest::Test
   end
   
   def test_it_can_make_shifts_negative
-    assert_equal [-21, -30, -43, -51], @shift.get_negative_shifts
+    assert_equal [-21, -30, -43, -51], @shift.backwards_shifts
   end
 end
