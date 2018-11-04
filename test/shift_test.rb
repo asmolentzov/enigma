@@ -31,18 +31,6 @@ class ShiftTest < Minitest::Test
     assert_instance_of Integer, shifts.last
   end
   
-  def test_it_can_create_date_string_from_date_object
-    date = Date.parse('3rd Nov 2018')
-    shift = Shift.new('12345', date)
-    assert_equal '031118', shift.get_date(date)
-    assert_equal '031118', shift.date
-
-    date_2 = '121212'
-    shift_2 = Shift.new('12345', date_2)
-    assert_equal '121212', shift_2.get_date(date_2)
-    assert_equal '121212', shift_2.date
-  end
-  
   def test_it_can_make_shifts_negative
     assert_equal [-21, -30, -43, -51], @shift.backwards_shifts
   end

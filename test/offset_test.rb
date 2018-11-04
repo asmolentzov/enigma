@@ -19,4 +19,10 @@ class OffsetTest < Minitest::Test
     assert_equal [9, 9, 2, 4], offset.create_offsets
   end
   
+  def test_it_can_create_date_string_from_date_object
+    date = Date.parse('3rd Nov 2018')
+    offset = Offset.new(date)
+    assert_equal '031118', offset.date
+  end
+  
 end
