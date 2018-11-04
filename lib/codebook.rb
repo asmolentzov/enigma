@@ -1,3 +1,5 @@
+require './lib/rotator'
+
 class Codebook
   
   def self.encrypt(message, shift)
@@ -20,5 +22,13 @@ class Codebook
       split_phrase << phrase_characters.shift(4)
     end
     split_phrase
+  end
+  
+  def code
+    rotator = Rotator.new(("a".."z").to_a << " ")
+    character_chunks = four_split
+    character_chunks.map do |character_chunk|
+      rotator.rotate_four(character_chunk, @shifts)
+    end.join
   end
 end
