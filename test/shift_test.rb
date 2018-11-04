@@ -16,6 +16,10 @@ class ShiftTest < Minitest::Test
     assert_instance_of Key, @shift.key
     assert_equal '230714', @shift.date
   end
+  
+  def test_it_can_return_key_value
+    assert_equal '12345', @shift.key
+  end
     
   def test_it_can_create_offsets
     assert_equal [9, 7, 9, 6], @shift.create_offsets
