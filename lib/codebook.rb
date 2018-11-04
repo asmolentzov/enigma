@@ -19,7 +19,7 @@ class Codebook
     phrase_characters = @phrase.split('')
     split_phrase = []
     until phrase_characters == [] do
-      split_phrase << phrase_characters.shift(4)
+      split_phrase << phrase_characters.shift(Enigma::NUMBER_SHIFTS)
     end
     split_phrase
   end

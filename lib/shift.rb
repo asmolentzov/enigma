@@ -41,7 +41,8 @@ class Shift
   
   def create_offsets
     squared_date = @date.to_i ** 2
-    last_four = squared_date.to_s[-4, 4]
+    last_four = squared_date.to_s[-Enigma::NUMBER_SHIFTS,
+                                  Enigma::NUMBER_SHIFTS]
     last_four.split('').map do |char|
       char.to_i
     end
