@@ -16,11 +16,7 @@ class ShiftTest < Minitest::Test
     assert_equal '12345', @shift.key
     assert_equal '230714', @shift.date
   end
-  
-  def test_it_can_split_up_key
-    assert_equal [12, 23, 34, 45], @shift.key_split
-  end
-  
+    
   def test_it_can_create_offsets
     assert_equal [9, 7, 9, 6], @shift.create_offsets
   end
