@@ -28,7 +28,7 @@ class CodebookTest < Minitest::Test
   def test_it_can_decrypt_message
     cipher = 'keder ohulw'
     shift = mock
-    shift.stubs(:shifts).returns([3, 27, 73, 20])
+    shift.stubs(:backwards_shifts).returns([3, 27, 73, 20])
     message = Codebook.decrypt(cipher, shift)
     assert_equal 'hello world', message
   end
