@@ -23,7 +23,7 @@ class Shift
     if key
       key
     else
-      random_number(Enigma::KEY_LENGTH)
+      random_number_string(Enigma::KEY_LENGTH)
     end
   end
   

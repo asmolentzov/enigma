@@ -55,11 +55,11 @@ class ShiftTest < Minitest::Test
   end
   
   def test_it_can_generate_random_number
-    number = @shift.random_number(5)
+    number = @shift.random_number_string(5)
     assert_instance_of String, number
     assert_equal 5, number.length
     assert_instance_of Integer, number.to_i
-    number_2 = @shift.random_number(5)
+    number_2 = @shift.random_number_string(5)
     refute number == number_2
   end
   
