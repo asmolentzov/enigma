@@ -1,14 +1,16 @@
-require './lib/random_number_generator'
+require './lib/key'
 
 class Shift
 
-  include RandomNumber
-  attr_reader :key,
-              :date
+  attr_reader :date
   
   def initialize(key, date)
-    @key = get_key(key)
+    @key = Key.new(key)
     @date = get_date(date)
+  end
+  
+  def key
+    @key.key
   end
   
   def get_date(date)
@@ -17,25 +19,6 @@ class Shift
     else 
       date
     end
-  end
-  
-  def get_key(key)
-    if key
-      key
-    else
-      random_number_string(Enigma::KEY_LENGTH)
-    end
-  end
-  
-  def key_split
-    key_characters = @key.split('')
-    split = []
-    i = 0
-    (@key.length - 1).times do 
-      split << (key_characters[i] + key_characters[i + 1]).to_i
-      i += 1
-    end
-    split
   end
   
   def create_offsets
@@ -48,7 +31,7 @@ class Shift
   end
   
   def shifts
-    keys = key_split
+    keys = @key.keys
     offsets = create_offsets
 
     keys.zip(offsets).map do |key_offset|
