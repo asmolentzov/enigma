@@ -1,11 +1,13 @@
 require './test/test_helper'
 require './lib/encryptor'
+require './lib/shift'
 
 class EncryptorTest < Minitest::Test
   
   def setup
     message = 'hello world'
     shifts = [3, 27, 73, 20]
+    mock = 
     @encryptor = Encryptor.new(message, shifts)
   end
   

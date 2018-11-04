@@ -11,15 +11,14 @@ class Enigma
     end
     
     shift = Shift.new(key, date)
-    shifts = shift.shifts
-    encryptor = Encryptor.new(message, shifts)
+    encryptor = Encryptor.new(message, shift)
     cipher = encryptor.encrypt
     {encryption: cipher, key: shift.key, date: shift.date}
   end
   
   def decrypt(cipher, key, date = Date.today)
     shift = Shift.new(key, date)
-    decryptor = Decryptor.new(cipher, shift.shifts)
+    decryptor = Decryptor.new(cipher, shift)
     message = decryptor.decrypt
     {decryption: message, key: key, date: shift.date}
   end
