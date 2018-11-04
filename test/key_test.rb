@@ -1,5 +1,6 @@
 require './test/test_helper'
 require './lib/key'
+require './lib/enigma'
 
 class KeyTest < Minitest::Test
     
