@@ -4,6 +4,10 @@ class Key
   
   include RandomNumber
   
+  def self.get_last_four(phrase)
+    phrase[-4, 4]
+  end
+  
   attr_reader :key
   
   def initialize(key)
