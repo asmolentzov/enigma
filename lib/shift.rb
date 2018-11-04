@@ -2,12 +2,15 @@ require './lib/key'
 
 class Shift
 
-  attr_reader :key,
-              :date
+  attr_reader :date
   
   def initialize(key, date)
     @key = Key.new(key)
     @date = get_date(date)
+  end
+  
+  def key
+    @key.key
   end
   
   def get_date(date)
@@ -28,7 +31,7 @@ class Shift
   end
   
   def shifts
-    keys = key.keys
+    keys = @key.keys
     offsets = create_offsets
 
     keys.zip(offsets).map do |key_offset|
