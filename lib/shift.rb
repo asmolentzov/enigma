@@ -58,4 +58,10 @@ class Shift
     end
   end
   
+  def get_negative_shifts
+    shifts = get_shifts
+    shifts.map do |shift|
+      -shift
+    end
+  end
 end
