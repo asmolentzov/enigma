@@ -1,5 +1,8 @@
+require './lib/random_number_generator'
+
 class Shift
 
+  include RandomNumber
   attr_reader :key,
               :date
   
@@ -20,11 +23,7 @@ class Shift
     if key
       key
     else
-      key = ''
-      Enigma::KEY_LENGTH.times do 
-        key += rand(9).to_s
-      end
-      key
+      random_number_string(Enigma::KEY_LENGTH)
     end
   end
   
