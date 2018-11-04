@@ -1,5 +1,6 @@
 require './test/test_helper'
 require './lib/offset'
+require './lib/enigma'
 
 class OffsetTest < Minitest::Test
   
