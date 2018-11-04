@@ -49,7 +49,7 @@ class Shift
     end
   end
   
-  def get_shifts
+  def shifts
     keys = key_split
     offsets = create_offsets
 
@@ -59,7 +59,6 @@ class Shift
   end
   
   def backwards_shifts
-    shifts = get_shifts
     shifts.map do |shift|
       -shift
     end
