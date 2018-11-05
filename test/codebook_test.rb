@@ -60,4 +60,9 @@ class CodebookTest < Minitest::Test
   def test_it_can_join_key
     assert_equal '47121', Codebook.join_key([47, 71, 12, 21])
   end
+
+  def test_it_can_validate_key
+    assert Codebook.valid_key?([47, 71, 12, 21])
+    refute Codebook.valid_key?([21, 71, 12, 21])
+  end
 end
