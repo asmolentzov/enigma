@@ -15,6 +15,11 @@ class Shift
     end
   end
   
+  def self.get_cipher_shifts(cipher)
+    last_four = self.get_last_four(cipher)
+    self.get_index_differences(last_four)
+  end
+  
   def initialize(key, date)
     @key = Key.new(key)
     @offset = Offset.new(date)
