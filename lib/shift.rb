@@ -7,7 +7,7 @@ class Shift
     phrase[-4, 4]
   end
   
-  def self.get_shifts(characters)
+  def self.get_index_differences(characters)
     characters = characters.split('')
     rotator = Rotator.new(Enigma::CHARACTER_SET)
     characters.map.with_index do |character, index|

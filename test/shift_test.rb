@@ -40,8 +40,8 @@ class ShiftTest < Minitest::Test
     assert_equal ' end', last_four
   end
   
-  def test_it_can_get_shifts_to_crack_cipher
+  def test_it_can_get_index_differences
     last_four = 'agqh'
-    assert_equal [1, 2, 3, 4], Shift.get_shifts(last_four)
+    assert_equal [1, 2, 3, 4], Shift.get_index_differences(last_four)
   end
 end
