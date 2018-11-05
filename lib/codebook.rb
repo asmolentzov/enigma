@@ -25,6 +25,15 @@ class Codebook
     # require 'pry'; binding.pry
   end
   
+  def self.join_key(numbers)
+    key = ''
+    numbers.each do |number|
+      number = number.to_s.rjust(2, '0')
+      key += number[0]
+    end
+    key += numbers.last.to_s[1]
+  end
+  
   def initialize(phrase, shifts)
     @phrase = phrase
     @shifts = shifts
