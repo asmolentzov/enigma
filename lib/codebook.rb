@@ -15,14 +15,20 @@ class Codebook
     keys = shifts.zip(offsets).map do |shift_offset| 
       shift_offset[0] - shift_offset[1]
     end
-    x = keys.map do |key|
+    keys = keys.map do |key|
       if key < 0
         Enigma::CHARACTER_SET.length + key 
       else
         key
       end
     end
-    # require 'pry'; binding.pry
+    index = 0
+    until self.valid_key?(keys)
+      keys[index] = keys[index] + Enigma::CHARACTER_SET.length
+      index += 1
+      index %= 4
+    end
+    self.join_key(keys)
   end
   
   def self.join_key(numbers)
