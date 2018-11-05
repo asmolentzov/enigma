@@ -10,6 +10,21 @@ class Codebook
     self.new(cipher, shift.backwards_shifts).code
   end
   
+  def self.get_cipher_key(cipher, shifts, date)
+    offsets = Offset.new(date).offsets
+    keys = shifts.zip(offsets).map do |shift_offset| 
+      shift_offset[0] - shift_offset[1]
+    end
+    x = keys.map do |key|
+      if key < 0
+        Enigma::CHARACTER_SET.length + key 
+      else
+        key
+      end
+    end
+    # require 'pry'; binding.pry
+  end
+  
   def initialize(phrase, shifts)
     @phrase = phrase
     @shifts = shifts
