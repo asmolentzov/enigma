@@ -56,4 +56,8 @@ class CodebookTest < Minitest::Test
     cipher = 'jdzjqzjmtkrygmr'
     assert_equal '47121', Codebook.get_cipher_key(cipher, shifts, date)
   end
+  
+  def test_it_can_join_key
+    assert_equal '47121', Codebook.join_key([47, 71, 12, 21])
+  end
 end
