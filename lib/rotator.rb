@@ -27,7 +27,7 @@ class Rotator
     key_index = @character_set.find_index(key)
     difference = index - key_index
     if difference < 0
-      difference = difference.abs + @character_set.length
+      difference = difference + @character_set.length
     end
     difference
   end

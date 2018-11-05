@@ -46,7 +46,7 @@ class RotatorTests < Minitest::Test
     assert_equal 1, @rotator.get_amount('b', 'a')
     assert_equal 4, @rotator.get_amount('f', 'b')
     assert_equal 0, @rotator.get_amount('a', 'a')
-    assert_equal 28, @rotator.get_amount('a', 'b')
+    assert_equal 26, @rotator.get_amount('a', 'b')
   end
   
 end
