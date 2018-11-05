@@ -34,4 +34,14 @@ class ShiftTest < Minitest::Test
   def test_it_can_make_shifts_negative
     assert_equal [-21, -30, -43, -51], @shift.backwards_shifts
   end
+  
+  def test_it_can_get_last_four_characters
+    last_four = Key.get_last_four('hello world end')
+    assert_equal ' end', last_four
+  end
+  
+  def test_it_can_get_index_differences
+    last_four = 'agqh'
+    assert_equal [1, 2, 3, 4], Key.get_index_differences(last_four)
+  end
 end
