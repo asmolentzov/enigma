@@ -2,6 +2,19 @@ require './lib/key'
 require './lib/offset'
 
 class Shift
+  
+  def self.get_last_four(phrase)
+    phrase[-4, 4]
+  end
+  
+  def self.get_index_differences(characters)
+    characters = characters.split('')
+    rotator = Rotator.new(Enigma::CHARACTER_SET)
+    characters.map.with_index do |character, index|
+      rotator.get_amount(character, Enigma::CRACK_PHRASE[index])
+    end
+  end
+  
   def initialize(key, date)
     @key = Key.new(key)
     @offset = Offset.new(date)

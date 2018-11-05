@@ -4,18 +4,6 @@ class Key
   
   include RandomNumber
   
-  def self.get_last_four(phrase)
-    phrase[-4, 4]
-  end
-  
-  def self.get_index_differences(characters)
-    characters = characters.split('')
-    rotator = Rotator.new(Enigma::CHARACTER_SET)
-    characters.map.with_index do |character, index|
-      rotator.get_amount(character, Enigma::CRACK_PHRASE[index])
-    end
-  end
-  
   attr_reader :key
   
   def initialize(key)
