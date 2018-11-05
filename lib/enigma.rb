@@ -25,4 +25,11 @@ class Enigma
     {decryption: message, key: key, date: shift.date}
   end
   
+  def crack(cipher, date = Date.today)
+    shifts = Shift.get_cipher_shifts(cipher)
+    key = Codebook.get_cipher_key(cipher, shifts)
+    message = decrypt(cipher, key, date)[:decryption]
+    {decryption: message, key: key, date: date}
+  end
+  
 end
