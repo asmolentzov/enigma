@@ -62,7 +62,11 @@ class CodebookTest < Minitest::Test
   end
 
   def test_it_can_validate_key
-    assert Codebook.valid_key?([47, 71, 12, 21])
-    refute Codebook.valid_key?([21, 71, 12, 21])
+    keys = [47, 71, 12, 21]
+    offsets = [9, 9, 2, 4]
+    shifts = [2, 26, 14, 25]
+    assert Codebook.valid_key?(keys, offsets, shifts)
+    keys = [21, 71, 12, 21]
+    refute Codebook.valid_key?(keys, offsets, shifts)
   end
 end
