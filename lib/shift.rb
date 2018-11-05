@@ -19,6 +19,10 @@ class Shift
     self.get_index_differences(last_four)
   end
   
+  def self.get_cipher_shift_rotation(cipher)
+    cipher.length %  Enigma::NUMBER_SHIFTS
+  end
+  
   def initialize(key, date)
     @key = Key.new(key)
     @offset = Offset.new(date)
