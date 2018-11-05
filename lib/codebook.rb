@@ -23,7 +23,7 @@ class Codebook
       end
     end
     index = 0
-    until self.valid_key?(keys)
+    until self.valid_key?(keys, offsets, shifts)
       keys[index] = keys[index] + Enigma::CHARACTER_SET.length
       index += 1
       index %= 4
@@ -40,16 +40,22 @@ class Codebook
     key += numbers.last.to_s[1]
   end
   
-  def self.valid_key?(numbers)
-    numbers = numbers.map do |number|
+  def self.valid_key?(keys, offsets, shifts)
+    key_strings = keys.map do |number|
       number.to_s.rjust(2, '0')
     end    
     valid = []
-    numbers.each_with_index do |number, index|
-      break unless index < (numbers.length - 1)
-      valid << (number[1] == numbers[index + 1][0])
+    key_strings.each_with_index do |number, index|
+      break unless index < (key_strings.length - 1)
+      valid << (number[1] == key_strings[index + 1][0])
     end
     valid.all? 
+    
+    valid_two = []
+    keys.each_with_index do |key, index|
+      valid_two << (((key + offsets[index]) % 27) == (shifts[index] % 27))
+    end
+    valid && valid_two.all?
   end
   
   def initialize(phrase, shifts)
