@@ -37,11 +37,11 @@ class ShiftTest < Minitest::Test
   
   def test_it_can_get_last_four_characters
     last_four = Shift.get_last_four('hello world end')
-    assert_equal ' end', last_four
+    assert_equal [' ', 'e', 'n', 'd'], last_four
   end
   
   def test_it_can_get_index_differences
-    last_four = 'agqh'
+    last_four = ['a', 'g', 'q', 'h']
     assert_equal [1, 2, 3, 4], Shift.get_index_differences(last_four)
   end
   

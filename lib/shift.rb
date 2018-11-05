@@ -4,11 +4,10 @@ require './lib/offset'
 class Shift
   
   def self.get_last_four(phrase)
-    phrase[-4, 4]
+    phrase[-4, 4].split('')
   end
   
   def self.get_index_differences(characters)
-    characters = characters.split('')
     rotator = Rotator.new(Enigma::CHARACTER_SET)
     characters.map.with_index do |character, index|
       rotator.get_amount(character, Enigma::CRACK_PHRASE[index])
