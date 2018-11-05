@@ -1,5 +1,6 @@
 require './test/test_helper'
 require './lib/codebook'
+require './lib/enigma'
 
 class CodebookTest < Minitest::Test
   def setup
@@ -50,7 +51,7 @@ class CodebookTest < Minitest::Test
   end
   
   def test_it_can_get_cipher_key
-    date = date.parse('5th Nov 2018')
+    date = Date.parse('5th Nov 2018')
     shifts = [2, 26, 14, 25]
     cipher = 'jdzjqzjmtkrygmr'
     assert_equal '47121', Codebook.get_cipher_key(cipher, shifts, date)
