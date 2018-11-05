@@ -49,4 +49,9 @@ class ShiftTest < Minitest::Test
     cipher = 'aldkajfdslagqh'
     assert_equal [1, 2, 3, 4], Shift.get_cipher_shifts(cipher)
   end
+  
+  def test_it_can_get_shift_rotations
+    cipher = 'aldkajfdslagqh'
+    assert_equal 2, Shift.get_cipher_shift_rotation(cipher)
+  end
 end
