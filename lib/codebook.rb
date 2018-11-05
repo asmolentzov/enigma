@@ -34,6 +34,18 @@ class Codebook
     key += numbers.last.to_s[1]
   end
   
+  def self.valid_key?(numbers)
+    numbers = numbers.map do |number|
+      number.to_s.rjust(2, '0')
+    end    
+    valid = []
+    numbers.each_with_index do |number, index|
+      break unless index < (numbers.length - 1)
+      valid << (number[1] == numbers[index + 1][0])
+    end
+    valid.all? 
+  end
+  
   def initialize(phrase, shifts)
     @phrase = phrase
     @shifts = shifts
