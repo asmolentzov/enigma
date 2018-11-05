@@ -47,7 +47,7 @@ class Shift
     offsets = @offset.offsets
 
     keys.zip(offsets).map do |key_offset|
-      key_offset.sum
+      key_offset.sum % Enigma::CHARACTER_SET.length
     end
   end
   
