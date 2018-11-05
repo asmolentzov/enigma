@@ -1,4 +1,5 @@
 require './lib/rotator'
+require './lib/key'
 
 class Codebook
   
@@ -24,9 +25,7 @@ class Codebook
     end
     index = 0
     until self.valid_key?(keys, offsets, shifts)
-      keys[index] = keys[index] + Enigma::CHARACTER_SET.length
-      index += 1
-      index %= 4
+      keys = Key.new(nil).keys
     end
     self.join_key(keys)
   end
@@ -55,7 +54,7 @@ class Codebook
     keys.each_with_index do |key, index|
       valid_two << (((key + offsets[index]) % 27) == (shifts[index] % 27))
     end
-    valid && valid_two.all?
+    valid.all? && valid_two.all?
   end
   
   def initialize(phrase, shifts)
