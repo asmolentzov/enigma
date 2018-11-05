@@ -13,21 +13,11 @@ class Codebook
   
   def self.get_cipher_key(cipher, shifts, date)
     offsets = Offset.new(date).offsets
-    # # keys = shifts.zip(offsets).map do |shift_offset| 
-    # #   shift_offset[0] - shift_offset[1]
-    # # end
-    # # keys = keys.map do |key|
-    # #   if key < 0
-    # #     Enigma::CHARACTER_SET.length + key 
-    # #   else
-    # #     key
-    # #   end
-    # # end
-    # index = 0
     keys = Key.new(nil).keys
     until self.valid_key?(keys, offsets, shifts)
       keys = Key.new(nil).keys
     end
+    
     self.join_key(keys)
   end
   
@@ -37,7 +27,7 @@ class Codebook
       number = number.to_s.rjust(2, '0')
       key += number[0]
     end
-    key += numbers.last.to_s[1]
+    key += numbers.last.to_s.rjust(2, '0')[1]
   end
   
   def self.valid_key?(keys, offsets, shifts)
@@ -49,7 +39,6 @@ class Codebook
       break unless index < (key_strings.length - 1)
       valid << (number[1] == key_strings[index + 1][0])
     end
-    valid.all? 
     
     valid_two = []
     keys.each_with_index do |key, index|
