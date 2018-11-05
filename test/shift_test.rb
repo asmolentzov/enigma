@@ -44,4 +44,9 @@ class ShiftTest < Minitest::Test
     last_four = 'agqh'
     assert_equal [1, 2, 3, 4], Shift.get_index_differences(last_four)
   end
+  
+  def test_it_can_get_shifts_from_a_cipher
+    cipher = 'aldkajfdslagqh'
+    assert_equal [1, 2, 3, 4], Shift.get_cipher_shifts(cipher)
+  end
 end
