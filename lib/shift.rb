@@ -23,6 +23,12 @@ class Shift
     cipher.length %  Enigma::NUMBER_SHIFTS
   end
   
+  def self.cipher_shifts(cipher)
+    shifts = self.get_cipher_shifts(cipher)
+    rotation = self.get_cipher_shift_rotation(cipher)
+    shifts.rotate(-rotation)
+  end
+  
   def initialize(key, date)
     @key = Key.new(key)
     @offset = Offset.new(date)
