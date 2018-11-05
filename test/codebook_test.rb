@@ -48,4 +48,11 @@ class CodebookTest < Minitest::Test
     expected = [['h', 'e', 'l', 'l'], ['o', ' ',  'w', 'o'], ['r', 'l', 'd', '!']]
     assert_equal expected, codebook.four_split
   end
+  
+  def test_it_can_get_cipher_key
+    date = date.parse('5th Nov 2018')
+    shifts = [2, 26, 14, 25]
+    cipher = 'jdzjqzjmtkrygmr'
+    assert_equal '47121', Codebook.get_cipher_key(cipher, shifts, date)
+  end
 end

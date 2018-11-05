@@ -1,3 +1,5 @@
 coverage
 archive
-*.txt
+decrypted.txt
+encrypted.txt
+message.txt
