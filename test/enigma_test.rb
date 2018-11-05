@@ -100,4 +100,13 @@ class EnigmaTest < Minitest::Test
     decryption = @enigma.decrypt(encryption[:encryption], '02715')
     assert_equal 'hello world', decryption[:decryption]
   end
+  
+  def test_it_can_crack_a_cipher
+    date = Date.parse('4th Nov 2018').strftime('%d%m%y')
+    encryption = @enigma.encrypt('hello world end', date)
+    cracked = @enigma.crack(encryption[:encryption], date)
+    assert_equal 'hello world end', cracked[:decryption]
+    assert_equal encryption[:key], cracked[:key]
+    assert_equal encryption [:date], cracked[:date]
+  end
 end
