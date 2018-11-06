@@ -15,13 +15,13 @@ class Key
   end
   
   def keys
-    key_characters = @key.split('')
-    split = []
+    key_characters = @key.chars
+    split_key = []
     key_characters.each_with_index do |character, index|
       break unless index < Enigma::NUMBER_SHIFTS
-      split << (character + key_characters[index + 1]).to_i
+      split_key << (character + key_characters[index + 1]).to_i
     end
-    split
+    split_key
   end
   
 end

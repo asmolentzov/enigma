@@ -21,15 +21,6 @@ class CrackTest < Minitest::Test
     assert_equal key, crack.key
   end
   
-  # def test_its_key_and_decryption_starts_blank
-  #   message = 'hello world end'
-  #   key = '12345'
-  #   date = Date.parse('5th Nov 2018')
-  #   crack = Crack.new(message, key, date)
-  #   assert_equal '', crack.key
-  #   assert_equal '', crack.decryption
-  # end
-  
   def test_it_can_crack_a_cipher
     cipher = 'jcufqyeitjmuglm'
     date = Date.parse('5th Nov 2018')
@@ -38,6 +29,5 @@ class CrackTest < Minitest::Test
     assert_equal date, cracked.date
     assert_equal 5, cracked.key.length
     assert_instance_of String, cracked.key
-  end
-  
+  end  
 end
