@@ -102,11 +102,19 @@ class EnigmaTest < Minitest::Test
   end
   
   def test_it_can_crack_a_cipher
+    10.times do 
     date = Date.parse('4th Nov 2018').strftime('%d%m%y')
     encryption = @enigma.encrypt('hello world end', date)
     cracked = @enigma.crack(encryption[:encryption], date)
     assert_equal 'hello world end', cracked[:decryption]
-    assert_equal encryption[:key], cracked[:key]
-    assert_equal encryption [:date], cracked[:date]
+    # assert_equal encryption[:key], cracked[:key]
+    assert_equal encryption[:date], cracked[:date]
+    encryption_2 = @enigma.encrypt('hello world end', cracked[:key], date)
+    puts encryption[:encryption]
+    puts encryption[:key]
+    puts encryption_2[:encryption]
+    puts encryption_2[:key]
+    assert_equal encryption[:encryption], encryption_2[:encryption]
+  end
   end
 end

@@ -14,9 +14,15 @@ class Codebook
   def self.get_cipher_key(cipher, shifts, date)
     offsets = Offset.new(date).offsets
     keys = Key.new(nil).keys
-    until self.valid_key?(keys, offsets, shifts)
-      keys = Key.new(nil).keys
-    end
+    # require 'pry'; binding.pry
+    # possible_keys = (0..99).to_a.repeated_permutation(5).to_a
+    # require 'pry'; binding.pry
+    # keys = possible_keys.find do |keys|
+    #   self.valid_key?(keys, offsets, shifts)
+    # end
+    # until self.valid_key?(keys, offsets, shifts)
+    #   keys = Key.new(nil).keys
+    # end
     
     self.join_key(keys)
   end
@@ -41,8 +47,12 @@ class Codebook
     end
     
     valid_two = []
+    # keys.each_with_index do |key, index|
+    #   valid_two << (((key + offsets[index]) % 27) == (shifts[index] % 27))
+    # end
+    
     keys.each_with_index do |key, index|
-      valid_two << (((key + offsets[index]) % 27) == (shifts[index] % 27))
+      valid_two << (((key + offsets[index]) % Enigma::CHARACTER_SET.length) == shifts[index])
     end
     valid.all? && valid_two.all?
   end
