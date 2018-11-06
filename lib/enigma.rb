@@ -27,11 +27,9 @@ class Enigma
   
   def crack(cipher, date = Date.today)
     message = ''
-    key = 0
-    loop do 
-      key = rand(99999).to_s.rjust(5, '0')
+    until message[-4, 4] == ' end'
+      key = Key.new(nil).key
       message = decrypt(cipher, key, date)[:decryption]
-      break if message[-4, 4] == ' end'
     end
     {decryption: message, key: key, date: date}
   end
