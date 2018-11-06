@@ -40,4 +40,11 @@ class CrackTest < Minitest::Test
     assert_instance_of String, cracked.key
   end
   
+  def test_it_can_decrypt_message
+    cipher = 'jcufqyeitjmuglm'
+    date = Date.parse('5th Nov 2018')
+    assert_equal cipher.length, Crack.decrypt(cipher, date).length
+    assert_instance_of String, Crack.decrypt(cipher, date)
+  end
+  
 end
