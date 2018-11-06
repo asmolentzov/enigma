@@ -36,7 +36,8 @@ class CrackTest < Minitest::Test
     cracked = Crack.crack(cipher, date)
     assert_equal 'hello world end', cracked.message
     assert_equal date, cracked.date
-    assert_equal '74344', cracked.key
+    assert_equal 5, cracked.key.length
+    assert_instance_of String, cracked.key
   end
   
 end
