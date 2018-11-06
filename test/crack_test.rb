@@ -18,11 +18,12 @@ class CrackTest < Minitest::Test
     assert_equal date, crack.date
   end
   
-  def test_its_key_starts_blank
+  def test_its_key_and_decryption_starts_blank
     cipher = 'jcufqyeitjmuglm'
     date = Date.parse('5th Nov 2018')
     crack = Crack.new(cipher, date)
     assert_equal '', crack.key
+    assert_equal '', crack.decryption
   end
   
   def test_it_can_crack_a_cipher
