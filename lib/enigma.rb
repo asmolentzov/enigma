@@ -1,13 +1,12 @@
 require './lib/shift'
 require './lib/codebook'
-# require './lib/crack'
 
 class Enigma
   
   CHARACTER_SET = ("a".."z").to_a << " "
   KEY_LENGTH = 5
   NUMBER_SHIFTS = 4
-  CRACK_PHRASE = [' ', 'e', 'n', 'd']
+  CRACK_PHRASE = ' end'
   
   def encrypt(message, key = nil, date = Date.today)
     if key && key.length > KEY_LENGTH
@@ -27,9 +26,6 @@ class Enigma
   end
   
   def crack(cipher, date = Date.today)
-    if date.is_a? Date
-      date = date.strftime('%d%m%y')
-    end
     crack = Crack.crack(cipher, date)
     {decryption: crack.message, key: crack.key, date: crack.date}
   end

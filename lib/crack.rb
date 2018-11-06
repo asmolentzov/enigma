@@ -6,7 +6,7 @@ class Crack
   def self.crack(cipher, date)
     message = ''
     enigma = Enigma.new
-    until message[-4, 4] == ' end'
+    until message[-4, 4] == Enigma::CRACK_PHRASE
       key = Key.new(nil).key
       message = enigma.decrypt(cipher, key, date)[:decryption]
     end
