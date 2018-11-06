@@ -1,9 +1,8 @@
-require './lib/random_number_generator'
 require './lib/enigma'
+require './lib/key'
 
 class Crack
-  
-  include RandomNumber
+
   
   attr_reader :cipher,
               :date,

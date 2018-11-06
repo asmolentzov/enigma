@@ -29,7 +29,7 @@ class CrackTest < Minitest::Test
   def test_it_can_crack_a_cipher
     cipher = 'jcufqyeitjmuglm'
     date = Date.parse('5th Nov 2018')
-    cracked = Crack.new(cipher, date).crack
+    cracked = Crack.crack(cipher, date)
     assert_equal 'hello world end', cracked.decryption
     assert_equal date, cracked.date
     assert_equal '74344', cracked.key
