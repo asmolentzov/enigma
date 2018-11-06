@@ -21,14 +21,4 @@ class Rotator
       rotate_character(character, shifts[index])
     end
   end
-  
-  # def get_amount(character, key)
-  #   index = @character_set.find_index(character)
-  #   key_index = @character_set.find_index(key)
-  #   difference = index - key_index
-  #   if difference < 0
-  #     difference = difference + @character_set.length
-  #   end
-  #   difference
-  # end
 end
