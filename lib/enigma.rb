@@ -1,5 +1,6 @@
 require './lib/shift'
 require './lib/codebook'
+# require './lib/crack'
 
 class Enigma
   
@@ -26,11 +27,10 @@ class Enigma
   end
   
   def crack(cipher, date = Date.today)
-    message = ''
-    until message[-4, 4] == ' end'
-      key = Key.new(nil).key
-      message = decrypt(cipher, key, date)[:decryption]
+    if date.is_a? Date
+      date = date.strftime('%d%m%y')
     end
-    {decryption: message, key: key, date: date}
+    crack = Crack.crack(cipher, date)
+    {decryption: crack.message, key: crack.key, date: crack.date}
   end
 end
