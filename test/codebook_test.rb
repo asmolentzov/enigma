@@ -1,5 +1,6 @@
 require './test/test_helper'
 require './lib/codebook'
+require './lib/enigma'
 
 class CodebookTest < Minitest::Test
   def setup

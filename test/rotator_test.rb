@@ -41,5 +41,4 @@ class RotatorTests < Minitest::Test
     actual = @rotator.rotate_four(['a', 'b', 'c', 'd'], [1, 2, 3, 4])
     assert_equal ['b', 'd', 'f', 'h'], actual
   end
-  
 end

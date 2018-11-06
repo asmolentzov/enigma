@@ -2,6 +2,7 @@ require './lib/key'
 require './lib/offset'
 
 class Shift
+  
   def initialize(key, date)
     @key = Key.new(key)
     @offset = Offset.new(date)
@@ -20,7 +21,7 @@ class Shift
     offsets = @offset.offsets
 
     keys.zip(offsets).map do |key_offset|
-      key_offset.sum
+      key_offset.sum % Enigma::CHARACTER_SET.length
     end
   end
   

@@ -6,6 +6,7 @@ class Enigma
   CHARACTER_SET = ("a".."z").to_a << " "
   KEY_LENGTH = 5
   NUMBER_SHIFTS = 4
+  CRACK_PHRASE = ' end'
   
   def encrypt(message, key = nil, date = Date.today)
     if key && key.length > KEY_LENGTH
@@ -24,4 +25,8 @@ class Enigma
     {decryption: message, key: key, date: shift.date}
   end
   
+  def crack(cipher, date = Date.today)
+    crack = Crack.crack(cipher, date)
+    {decryption: crack.message, key: crack.key, date: crack.date}
+  end
 end

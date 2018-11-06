@@ -49,4 +49,5 @@ class KeyTest < Minitest::Test
       key_2 = Key.new(nil).key
       refute key_1 == key_2
     end
+    
 end
