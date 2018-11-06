@@ -1,5 +1,7 @@
 class Crack
   
+  
+  
   attr_reader :cipher,
               :date,
               :key
@@ -9,6 +11,4 @@ class Crack
     @date = date
     @key = ''
   end
-  
-  
 end
