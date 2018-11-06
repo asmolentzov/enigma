@@ -35,28 +35,28 @@ class ShiftTest < Minitest::Test
     assert_equal [-21, -3, -16, -24], @shift.backwards_shifts
   end
   
-  def test_it_can_get_last_four_characters
-    last_four = Shift.get_last_four('hello world end')
-    assert_equal [' ', 'e', 'n', 'd'], last_four
-  end
-  
-  def test_it_can_get_index_differences
-    last_four = ['a', 'g', 'q', 'h']
-    assert_equal [1, 2, 3, 4], Shift.get_index_differences(last_four)
-  end
-  
-  def test_it_can_get_shifts_from_a_cipher
-    cipher = 'aldkajfdslagqh'
-    assert_equal [1, 2, 3, 4], Shift.get_cipher_shifts(cipher)
-  end
-  
-  def test_it_can_get_shift_rotations
-    cipher = 'aldkajfdslagqh'
-    assert_equal 2, Shift.get_cipher_shift_rotation(cipher)
-  end
-  
-  def test_it_can_get_final_cipher_shifts
-    cipher = 'aldkajfdslagqh'
-    assert_equal [3, 4, 1, 2], Shift.cipher_shifts(cipher)
-  end
+  # def test_it_can_get_last_four_characters
+  #   last_four = Shift.get_last_four('hello world end')
+  #   assert_equal [' ', 'e', 'n', 'd'], last_four
+  # end
+  # 
+  # def test_it_can_get_index_differences
+  #   last_four = ['a', 'g', 'q', 'h']
+  #   assert_equal [1, 2, 3, 4], Shift.get_index_differences(last_four)
+  # end
+  # 
+  # def test_it_can_get_shifts_from_a_cipher
+  #   cipher = 'aldkajfdslagqh'
+  #   assert_equal [1, 2, 3, 4], Shift.get_cipher_shifts(cipher)
+  # end
+  # 
+  # def test_it_can_get_shift_rotations
+  #   cipher = 'aldkajfdslagqh'
+  #   assert_equal 2, Shift.get_cipher_shift_rotation(cipher)
+  # end
+  # 
+  # def test_it_can_get_final_cipher_shifts
+  #   cipher = 'aldkajfdslagqh'
+  #   assert_equal [3, 4, 1, 2], Shift.cipher_shifts(cipher)
+  # end
 end

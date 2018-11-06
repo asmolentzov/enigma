@@ -50,23 +50,23 @@ class CodebookTest < Minitest::Test
     assert_equal expected, codebook.four_split
   end
   
-  def test_it_can_get_cipher_key
-    date = Date.parse('5th Nov 2018')
-    shifts = [2, 26, 14, 25]
-    cipher = 'jdzjqzjmtkrygmr'
-    assert_equal '47121', Codebook.get_cipher_key(cipher, shifts, date)
-  end
-  
-  def test_it_can_join_key
-    assert_equal '47121', Codebook.join_key([47, 71, 12, 21])
-  end
-
-  def test_it_can_validate_key
-    keys = [47, 71, 12, 21]
-    offsets = [9, 9, 2, 4]
-    shifts = [2, 26, 14, 25]
-    assert Codebook.valid_key?(keys, offsets, shifts)
-    keys = [21, 71, 12, 21]
-    refute Codebook.valid_key?(keys, offsets, shifts)
-  end
+  # def test_it_can_get_cipher_key
+  #   date = Date.parse('5th Nov 2018')
+  #   shifts = [2, 26, 14, 25]
+  #   cipher = 'jdzjqzjmtkrygmr'
+  #   assert_equal '47121', Codebook.get_cipher_key(cipher, shifts, date)
+  # end
+  # 
+  # def test_it_can_join_key
+  #   assert_equal '47121', Codebook.join_key([47, 71, 12, 21])
+  # end
+  # 
+  # def test_it_can_validate_key
+  #   keys = [47, 71, 12, 21]
+  #   offsets = [9, 9, 2, 4]
+  #   shifts = [2, 26, 14, 25]
+  #   assert Codebook.valid_key?(keys, offsets, shifts)
+  #   keys = [21, 71, 12, 21]
+  #   refute Codebook.valid_key?(keys, offsets, shifts)
+  # end
 end
